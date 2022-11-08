@@ -1,9 +1,5 @@
-ENTRY(_start)
-
 SECTIONS
 {
-    . = 0x400000;
-
     .text :
     {
         *(.text*)
@@ -37,7 +33,6 @@ SECTIONS
     } :rodata :note
 
     . = ALIGN(0x1000);
-
     .bss ALIGN(0x1000) :
     {
         *(COMMON*)

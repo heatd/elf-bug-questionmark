@@ -7,7 +7,13 @@
 char bss_filler[2049];
 unsigned int data = 0xdeaddead;
 
-void _start()
+#ifdef RUNNING_CRT
+#define MAIN_FUNCTION int main
+#else
+#define MAIN_FUNCTION void _start
+#endif
+
+MAIN_FUNCTION ()
 {
     if (data != 0xdeaddead)
         __asm__ __volatile__("ud2");
